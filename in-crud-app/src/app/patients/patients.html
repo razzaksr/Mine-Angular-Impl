@@ -1,0 +1,44 @@
+<div>
+  <input type="text" placeholder="name" [(ngModel)]="patientObj.name">
+  <input type="text" placeholder="age" [(ngModel)]="patientObj.age">
+  <input type="text" placeholder="height" [(ngModel)]="patientObj.height">
+  <input type="text" placeholder="weight" [(ngModel)]="patientObj.weight">
+  <input type="text" placeholder="gender" [(ngModel)]="patientObj.gender">
+  @if(!isEdit){<button (click)="registerPatient()">Register</button>}
+  @if(isEdit){<button (click)="updatePatient()">Update</button>}
+  <button (click)="resetForm()">Clean</button>
+</div>
+<p>patients works!</p>
+<table style="border:1px; margin-top: 20px; width: 100%;">
+    <thead>
+      <tr>
+        <th>Patient Name</th>
+        <th>Patient Age</th>
+        <th>Patient Height</th>
+        <th>Patient Weight</th>
+        <th>Patient Gender</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody style="text-align: center;">
+      @for (patient of myPatients; let i = $index; track i){
+        <tr>
+            <td>{{patient.name}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.height}}</td>
+            <td>{{patient.weight}}</td>
+            <td>{{patient.gender}}</td>
+            <td style="display: flex; justify-content: space-evenly;">
+                <button (click)="editPatient(patient)">Edit</button>
+                <button (click)="deletePatient(patient.name)">Delete</button>
+            </td>
+        </tr>
+      }
+
+        
+        <!-- <td>
+          <button (click)="editStudent(stu)">Edit</button>
+          <button (click)="deleteStudent(stu.id)">Delete</button>
+        </td> -->
+    </tbody>
+</table>

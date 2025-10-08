@@ -1,0 +1,8 @@
+<p>view-items works!</p>
+@for (item of tempCart; let i = $index; track i){
+    <div class="listitem">
+        <h2>{{item}}</h2>
+        <button id="but" (click)="delete(i)" >Delete</button>
+        <button id="but" (click)="edit(i)" >Edit</button>
+    </div>
+}

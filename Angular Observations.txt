@@ -1,0 +1,46 @@
+Angular Setting up environment:
+install nodejs
+install angular via node: npm i -g @angular/cli
+check angular version: ng --version
+
+install extensions in vs code:
+debugger for chrome/ edge tools
+angular language service
+angular schematics
+
+
+create plain project: ng new APP-NAME
+running angular project: cd APP-NAME && ng serve
+
+
+index.html:
+	app-root element where components are injected
+src/ main.ts:
+	where the injection configured, typically it will inject app.ts from src/app/app.ts
+src/app:
+	where i can see component app.ts which contains template app.html and its style with routing with inbuilt code
+src/app/app.html:
+	this is template for the component of app, where all contents to be written inside element main with class="main"
+src/app/app.css:
+	styling for template app.html
+src/style.css:
+	styling for index.html
+
+
+to create new component like app:
+	ng generate component COMPONENT-NAME
+	note: usually all new components are generated in side src/app folder
+	each component will contains excusive folder inside src/app and which contains particulars such as css, html, ts
+
+to connect new components with app component:
+	make sure new component has selector which points injection element in the app.html
+	in app.html specify the selector, mentioned in the new component.ts
+	in app.ts imports:[new component]
+
+
+CRUD via list of String as in memory:
+	interface Patient{}
+CRUD via JSON-SERVER:
+	npm i -g json-server
+	create separate json file in project root folder and create list of json onside {} with key>> example>> db.json
+	then to make that json file as db config>> json-server --watch db.json

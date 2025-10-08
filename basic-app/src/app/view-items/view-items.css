@@ -1,0 +1,20 @@
+.listitem{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+    display: inline-block;
+    background-color: chocolate;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+}
+#but{
+    background-color: red;
+    color:white;
+    border: none;
+    border-radius: 10px;
+    padding: 7px;
+    font-family: 'monotype corsiva';
+    box-shadow: 5px 5px 5px grey;
+    margin: 10px;
+}

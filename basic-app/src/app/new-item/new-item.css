@@ -1,0 +1,10 @@
+#but{
+    background-color: cadetblue;
+    color:white;
+    border: none;
+    border-radius: 10px;
+    padding: 7px;
+    font-family: 'monotype corsiva';
+    box-shadow: 5px 5px 5px grey;
+    margin: 10px;
+}
