@@ -40,6 +40,8 @@ to connect new components with app component:
 
 CRUD via list of String as in memory:
 	interface Patient{}
+CRUD via localStorage memory:
+	OnInit interface implementation to loadPAtients from local storage and separate function to save in to local storage with existing in memory
 CRUD via JSON-SERVER:
 	npm i -g json-server
 	create separate json file in project root folder and create list of json onside {} with key>> example>> db.json
