@@ -97,7 +97,7 @@
             <td>{{patient.height}}</td>
             <td>{{patient.weight}}</td>
             <td>{{patient.gender}}</td>
-            <td>{{patient | bmi}}</td>
+            <td [appMakeover]="patient | bmi">{{patient | bmi}}</td>
             <td style="display: flex; justify-content: space-evenly;">
                 <button (click)="editPatient(i)">Edit</button>
                 <button (click)="deletePatient(i)">Delete</button>

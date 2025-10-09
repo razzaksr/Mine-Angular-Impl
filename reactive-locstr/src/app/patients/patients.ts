@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Patient } from '../models/patient.model';
 import { Patientservice } from '../services/patientservice';
 import { BmiPipe } from '../pipes/bmi-pipe';
+import { Makeover } from '../directives/makeover';
 
 @Component({
   selector: 'app-patients',
-  imports:[ReactiveFormsModule,BmiPipe],
+  imports:[ReactiveFormsModule,BmiPipe,Makeover],
   templateUrl: './patients.html',
   styleUrl: './patients.css'
 })
@@ -26,7 +27,7 @@ export class Patients implements OnInit{
   ngOnInit(): void {
     // this.loadPatients()
     // call service methods
-    this.service.loadPatients()
+    this.myPatients = this.service.loadPatients()
     this.patientForm = this.fb.group({
       name: ['',[Validators.required, Validators.minLength(3)]],
       age: ['',[Validators.required, Validators.min(1),Validators.max(100)]],

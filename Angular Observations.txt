@@ -77,5 +77,25 @@ Pipes:
 	in component imports[BmiPipe]
 	in  html	{{patient|bmi}}
 
+Directives:
+	built in>> @if, @for
+	custom directives:
+		create custom directives>> ng g directive DIRECTIVENAME
+			eg: i just want to provide color based on bmi like underweight, obese, normal, overweight
+			ng g d directives/makeover		>> so it will be available in src/app/directives/makeover.ts
+			where you can begin with 
+			import { Directive } from '@angular/core';
 
+@Directive({
+  selector: '[appMakeover]'
+})
+export class Makeover {
+
+  constructor() { }
+
+}
+
+
+		
+		
 
