@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-
-interface Patient {
-  "name": string,
-  "age":number,
-  "height":number,
-  "weight": number,
-  "gender":string
-}
+import { Patient } from '../models/patient.model';
+import { Patientservice } from '../services/patientservice';
 
 @Component({
   selector: 'app-patients',
@@ -25,10 +19,13 @@ export class Patients implements OnInit{
   
   editIndex : number | null=null
 
-  constructor(private fb: FormBuilder) {}
+  // dependency injection of Service here in constructor
+  constructor(private fb: FormBuilder, private service:Patientservice) {}
 
   ngOnInit(): void {
-    this.loadPatients()
+    // this.loadPatients()
+    // call service methods
+    this.service.loadPatients()
     this.patientForm = this.fb.group({
       name: ['',[Validators.required, Validators.minLength(3)]],
       age: ['',[Validators.required, Validators.min(1),Validators.max(100)]],
@@ -37,16 +34,16 @@ export class Patients implements OnInit{
       gender: ['',[Validators.required, Validators.minLength(4)]]
     })
   }
-  // 📥 Load from localStorage
-  loadPatients(): void {
-    const data = localStorage.getItem('patients');
-    this.myPatients = data ? JSON.parse(data) : [];
-  }
+  // // 📥 Load from localStorage
+  // loadPatients(): void {
+  //   const data = localStorage.getItem('patients');
+  //   this.myPatients = data ? JSON.parse(data) : [];
+  // }
 
   // 💾 Save to localStorage
-  saveToStorage(): void {
-    localStorage.setItem('patients', JSON.stringify(this.myPatients));
-  }
+  // saveToStorage(): void {
+  //   localStorage.setItem('patients', JSON.stringify(this.myPatients));
+  // }
 
   // create new patient in myPatients list/ update exists
   addOrUpdatePatient(){
@@ -59,7 +56,8 @@ export class Patients implements OnInit{
     else{
       this.myPatients.push(formData)
     }
-    this.saveToStorage()
+    // this.saveToStorage()
+    this.service.saveToStorage(this.myPatients)
     this.patientForm.reset()
   }
   // read patient/ load into fields from table
@@ -71,7 +69,8 @@ export class Patients implements OnInit{
   deletePatient(index:number):void{
     if(confirm("Are you sure to delete this ?")){
       this.myPatients.splice(index,1)
-      this.saveToStorage()
+      // this.saveToStorage()
+      this.service.saveToStorage(this.myPatients)
     }
   }
 }

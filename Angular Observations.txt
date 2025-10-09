@@ -46,3 +46,25 @@ CRUD via JSON-SERVER:
 	npm i -g json-server
 	create separate json file in project root folder and create list of json onside {} with key>> example>> db.json
 	then to make that json file as db config>> json-server --watch db.json
+
+
+
+Reactive forms:
+	Validation along with forms built in operations like get element value, check invalid or not
+
+Dependency Injection:
+	demonstration via modular approach that is
+	model
+	service
+	component
+
+	eg:
+	model	>> eg: patient.model.ts under src/app/models folder
+	export interface Patient{}
+	service	>> eg: ng generate service services/patientservice
+	written all CRUD with localStorage so that it can be called from component
+	component:
+	constructor(private service:PatientService) >> injection happened here
+
+
+
