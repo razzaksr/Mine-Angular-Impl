@@ -66,5 +66,16 @@ Dependency Injection:
 	component:
 	constructor(private service:PatientService) >> injection happened here
 
+Pipes:
+	to generate custom pipes
+	eg: to find bmi of patient via passing patient object
+	ng g pipe pipes/bmi	>> so it will be located in the src/pipes/bmi-pipe.ts
+	then begin with
+	transform(){
+
+	}
+	in component imports[BmiPipe]
+	in  html	{{patient|bmi}}
+
 
 

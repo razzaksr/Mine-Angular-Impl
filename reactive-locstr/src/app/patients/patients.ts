@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Patient } from '../models/patient.model';
 import { Patientservice } from '../services/patientservice';
+import { BmiPipe } from '../pipes/bmi-pipe';
 
 @Component({
   selector: 'app-patients',
-  imports:[ReactiveFormsModule],
+  imports:[ReactiveFormsModule,BmiPipe],
   templateUrl: './patients.html',
   styleUrl: './patients.css'
 })

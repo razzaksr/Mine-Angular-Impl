@@ -85,6 +85,7 @@
         <th>Patient Height</th>
         <th>Patient Weight</th>
         <th>Patient Gender</th>
+        <th>Patient BMI</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -96,6 +97,7 @@
             <td>{{patient.height}}</td>
             <td>{{patient.weight}}</td>
             <td>{{patient.gender}}</td>
+            <td>{{patient | bmi}}</td>
             <td style="display: flex; justify-content: space-evenly;">
                 <button (click)="editPatient(i)">Edit</button>
                 <button (click)="deletePatient(i)">Delete</button>
