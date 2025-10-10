@@ -1,0 +1,107 @@
+<p>patients works!</p>
+<!-- ReactiveFormsModule -->
+<form (ngSubmit)="saveOrUp()" [formGroup]="patientForm">
+    <div>
+        <label>Patient Name</label>
+        <input formControlName="name" placeholder="enter patient name">
+        @if(patientForm.controls['name'].touched && patientForm.controls['name'].invalid){
+            <span>
+                @if(patientForm.controls['name'].errors?.['required']){
+                    <small>Name is Required</small>
+                }
+                @if(patientForm.controls['name'].errors?.['minlength']){
+                    <small>Minimum 3 characters are Required</small>
+                }
+            </span>
+        }
+    </div>
+    <div>
+        <label>Patient Age</label>
+        <input formControlName="age" placeholder="enter patient age">
+        @if(patientForm.controls['age'].touched && patientForm.controls['age'].invalid){
+            <span>
+                @if(patientForm.controls['age'].errors?.['required']){
+                    <small>Age is Required</small>
+                }
+                @if(patientForm.controls['age'].errors?.['min']){
+                    <small>Minimum 1 Required</small>
+                }
+                @if(patientForm.controls['age'].errors?.['max']){
+                    <small>Maximum 100 Required</small>
+                }
+            </span>
+        }
+    </div>
+    <div>
+        <label>Patient Height</label>
+        <input formControlName="height" placeholder="enter patient height">
+        @if(patientForm.controls['height'].touched && patientForm.controls['height'].invalid){
+            <span>
+                @if(patientForm.controls['height'].errors?.['required']){
+                    <small>Height is Required</small>
+                }
+                @if(patientForm.controls['height'].errors?.['min']){
+                    <small>Minimum 1 are Required</small>
+                }
+            </span>
+        }
+    </div>
+    <div>
+        <label>Patient weight</label>
+        <input formControlName="weight" placeholder="enter patient weight">
+        @if(patientForm.controls['weight'].touched && patientForm.controls['weight'].invalid){
+            <span>
+                @if(patientForm.controls['weight'].errors?.['required']){
+                    <small>weight is Required</small>
+                }
+                @if(patientForm.controls['weight'].errors?.['min']){
+                    <small>Minimum 1 are Required</small>
+                }
+            </span>
+        }
+    </div>
+    <div>
+        <label>Patient Gender</label>
+        <input formControlName="gender" placeholder="enter patient gender">
+        @if(patientForm.controls['gender'].touched && patientForm.controls['gender'].invalid){
+            <span>
+                @if(patientForm.controls['gender'].errors?.['required']){
+                    <small>Gender is Required</small>
+                }
+                @if(patientForm.controls['gender'].errors?.['minlength']){
+                    <small>Minimum 4 characters are Required</small>
+                }
+            </span>
+        }
+    </div>
+    <button type="submit">{{editId!==null?'Update':'Add'}}</button>
+</form>
+<table style="border:1px; margin-top: 20px; width: 100%;">
+    <thead>
+      <tr>
+        <th>Patient Name</th>
+        <th>Patient Age</th>
+        <th>Patient Height</th>
+        <th>Patient Weight</th>
+        <th>Patient Gender</th>
+        <th>Patient BMI</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody style="text-align: center;">
+      @for (patient of temp; let i = $index; track i){
+        <tr>
+            <td>{{patient.name}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.height}}</td>
+            <td>{{patient.weight}}</td>
+            <td>{{patient.gender}}</td>
+            <td [appMakeover]="patient | bmi">{{patient | bmi}}</td>
+            <td style="display: flex; justify-content: space-evenly;">
+                <button (click)="edit(patient.id)">Edit</button>
+                <button (click)="remove(patient.id)">Delete</button>
+            </td>
+        </tr>
+      }
+    </tbody>
+</table>

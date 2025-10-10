@@ -38,19 +38,54 @@ to connect new components with app component:
 	in app.ts imports:[new component]
 
 
+Angular Data Bind:
+	property bind	>> 
+		flash.html>> <tr><td>3</td><td [textContent]="skill"></td></tr>
+		flash.ts	> 
+export class Flash {
+  skill = "React JS"
+}
+
+	style bind		>> styling:
+		flash.html>> <tr><td [style]="styling">3</td><td>React</td></tr>
+		flsh.ts>> export class Flash {
+  get styling(){
+    return{
+      'color':'white'
+    }
+  }
+}
+	two way bind	>> ngModel with model attributes
+	event bind>> on click event for example
+
+
 CRUD via list of String as in memory:
 	interface Patient{}
 CRUD via localStorage memory:
 	OnInit interface implementation to loadPAtients from local storage and separate function to save in to local storage with existing in memory
 CRUD via JSON-SERVER:
+	subscribe(callback function)
+	json-server is like any json file to be considered as database since json file based it works so its permanent and it can be hosted as database server where you can see localhost:3000/key
 	npm i -g json-server
 	create separate json file in project root folder and create list of json onside {} with key>> example>> db.json
 	then to make that json file as db config>> json-server --watch db.json
+	since its standalone no need app.module.ts, also it needs HttpClientProvider so in main.ts>> appConfig>> providers>>add provideHttpClient()
+	
+
+	json-server httpclient methods>> post, get, patch, put, delete
+	in json-server when you filter by any fields other than id then the url must be like http://loclahost:3000/myPatients?name=udhay
+	also the above one returns [] of values not one patient so while fetch in component using subscribe make sure you use index, however fetch based on others fields works but to update via put or patch json-server mandates id not via any fields
+
+
 
 
 
 Reactive forms:
 	Validation along with forms built in operations like get element value, check invalid or not
+	Need to import>> FormsModule, ReactiveFormsModule
+	Need to create object for FormBuilder	in constructor of component
+	Then build the from with validators inside NgOnInt with implements of OnInit interface
+	
 
 Dependency Injection:
 	demonstration via modular approach that is

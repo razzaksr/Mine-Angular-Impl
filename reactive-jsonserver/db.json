@@ -1,0 +1,12 @@
+{
+  "myPatients": [
+    {
+      "name": "Pats",
+      "age": "23",
+      "height": "167",
+      "weight": "70",
+      "gender": "male",
+      "id": "4986"
+    }
+  ]
+}
